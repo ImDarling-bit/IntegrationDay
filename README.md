@@ -22,19 +22,10 @@ Version optimisée pour tests locaux avec WAMP Server et MySQL.
 ## 👥 Équipes de Test
 
 - **Equipe1** / mot de passe : `pass1`
-- **Equipe2** / mot de passe : `pass2`
-- **Equipe3** / mot de passe : `pass3`
-- **Test Team** / mot de passe : `test123`
-- **Hackers** / mot de passe : `hack`
 
 ## 🔍 Codes QR Disponibles
 
 - `MARIE_CURIE_001` - Marie Curie (100 pts)
-- `EINSTEIN_002` - Albert Einstein (100 pts)
-- `NEWTON_003` - Isaac Newton (100 pts)
-- `GALILEO_004` - Galilée (100 pts)
-- `DARWIN_005` - Charles Darwin (100 pts)
-- `PASTEUR_006` - Louis Pasteur (100 pts)
 
 ## 📁 Structure
 
@@ -58,7 +49,7 @@ maria-curia-wamp/
 ### ✅ **Interface Équipes**
 - **Connexion** avec nom d'équipe + mot de passe
 - **Dashboard** avec progression et statistiques
-- **Scanner** avec aide visuelle et codes
+- ❌ **Scanner** avec aide visuelle et codes
 - **Classement** temps réel avec auto-refresh
 - **Statistiques** avancées et graphiques
 
@@ -68,7 +59,7 @@ maria-curia-wamp/
 - **Requêtes préparées** pour la sécurité
 - **Auto-refresh** des données
 
-### ✅ **Interface Améliorée**
+### ❌ **Interface Améliorée**
 - **Design responsive** et moderne
 - **Animations CSS** fluides
 - **Auto-refresh** automatique
@@ -121,7 +112,7 @@ $password = '';            // Mot de passe (vide par défaut)
 - **Progression globale**
 - **Timeline des événements**
 
-## 🎯 Avantages MySQL vs SQLite
+## Avantages MySQL vs SQLite
 
 - ✅ **Performance** : Plus rapide pour les accès concurrents
 - ✅ **Concurrence** : Gestion optimale des accès simultanés
@@ -129,10 +120,9 @@ $password = '';            // Mot de passe (vide par défaut)
 - ✅ **Monitoring** : Outils phpMyAdmin intégrés
 - ✅ **Scalabilité** : Support de plus d'équipes simultanées
 
-## 🚀 URLs d'Accès
+## URLs d'Accès
 
 - **Jeu** : http://localhost/maria-curia-wamp/
 - **phpMyAdmin** : http://localhost/phpmyadmin
 - **WAMP** : http://localhost/
 
-Parfait pour des tests avec de nombreuses équipes simultanées ! 🎪🔬
