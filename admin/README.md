@@ -6,8 +6,8 @@ Panel d'administration pour organisateurs et "hackers" du jeu Maria Curia.
 
 ### 1. Base de Données Admin
 ```sql
--- Créer la base admin séparée
-CREATE DATABASE maria_curia_admin;
+-- use la base admin séparée
+USE DATABASE maria_curia;
 
 -- Importer le schéma
 -- Dans phpMyAdmin : importer admin_database.sql
