@@ -23,9 +23,6 @@ USE DATABASE maria_curia;
 | Utilisateur | Mot de Passe | Rôle |
 |-------------|--------------|------|
 | admin | admin123 | admin |
-| hacker1 | hack123 | hacker |
-| hacker2 | hack456 | hacker |
-| organizer | org123 | organizer |
 
 ## 🎮 Fonctionnalités
 
