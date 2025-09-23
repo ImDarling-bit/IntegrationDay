@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier les Points</title>
+    <link rel="stylesheet" href="../src/css/add.css">
 </head>
 <body>
     <h1>Modifier les Points des Équipes</h1>

@@ -30,11 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $message = "Veuillez sélectionner une équipe et une action.";
     }
+    header('Location: ../controller/C_orga.php');
+    exit();
 }
 
 require_once '../view/orga.php';
 require_once '../view/add.php';
-require_once '../view/score.php';
+require_once '../view/score_orga.php';
 require_once '../view/deco.php';
 require_once '../view/footer.php';
 ?>

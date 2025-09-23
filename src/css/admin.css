@@ -1,0 +1,95 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 32px;
+    color: #333;
+}
+
+div {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+button {
+    background: #655f88;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    margin: 8px 6px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #494465;
+    color: #333;
+}
+
+table {
+    margin: 0 auto 32px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 700px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: center;
+}
+
+th {
+    background: #655f88;
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f2f6fa;
+}
+
+tr:nth-child(odd) {
+    background: #e9ecef;
+}
+
+p {
+    text-align: center;
+    color: #c00;
+    font-size: 1.1em;
+    margin-top: 40px;
+}
+
+h2 {
+    text-align: center;
+    color: #353535;
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+
+h3 {
+    text-align: center;
+    color: #353535;
+    font-size: 1.3em;
+    margin-top: 40px;
+}
+
+#logout {
+    color: #f11717;
+    text-decoration: underline;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+    width: fit-content;
+}

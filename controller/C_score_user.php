@@ -5,5 +5,5 @@ require_once '../model/function.php';
 
 $teams = getTeamsWithScores();
 
-require_once '../view/score.php';
+require_once '../view/score_user.php';
 ?>

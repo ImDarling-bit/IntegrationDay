@@ -43,4 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 require_once '../view/login.php';
+require_once '../view/footer.php';
+
 ?>
