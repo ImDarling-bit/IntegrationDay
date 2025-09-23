@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,13 +33,20 @@
     <?php else: ?>
         <h2>Liste des équipes</h2>
 
+        <?php if (!empty($message)): ?>
+            <div style="padding: 10px; margin: 10px 0; background-color: #dff0d8; border: 1px solid #d6e9c6; color: #3c763d;">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
+        <?php endif; ?>
+
     <?php if (!empty($teams)): ?>
         <table>
             <thead>
                 <tr>
                     <th>Nom de l'équipe</th>
                     <th>Points</th>
-                    <th>Action</th>
+                    <th>Statut</th>
+                    <th>Freeze</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +55,30 @@
                         <td><?php echo htmlspecialchars($team['nom']); ?></td>
                         <td><?php echo htmlspecialchars($team['points']); ?></td>
                         <td>
-                            <button>Freeze</button>
+                            <?php 
+                            // Vérification si la clé freeze existe et gestion des valeurs
+                            $freezeStatus = isset($team['freeze']) ? (bool)$team['freeze'] : false;
+                            ?>
+                            <?php if ($freezeStatus): ?>
+                                <span style="color: red; font-weight: bold;">Activé</span>
+                            <?php else: ?>
+                                <span style="color: green; font-weight: bold;">Désactivé</span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <form method="POST" style="display: inline;">
+                                <input type="hidden" name="action" value="toggle_freeze">
+                                <input type="hidden" name="team_id" value="<?php echo $team['id']; ?>">
+                                <?php if ($freezeStatus): ?>
+                                    <button type="submit" style="background-color: #5cb85c; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                                        Désactiver
+                                    </button>
+                                <?php else: ?>
+                                    <button type="submit" style="background-color: #d9534f; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                                        Activer
+                                    </button>
+                                <?php endif; ?>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>

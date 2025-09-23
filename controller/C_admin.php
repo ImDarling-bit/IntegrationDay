@@ -5,8 +5,54 @@ require_once '../model/function.php';
 
 requireRole('admin');
 
+// Fonction pour basculer le statut freeze d'une équipe
+function toggleTeamFreeze($teamId, $pdo) {
+    try {
+        // Récupérer le statut actuel
+        $stmt = $pdo->prepare("SELECT freeze FROM teams WHERE id = :id");
+        $stmt->bindParam(':id', $teamId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($result) {
+            // Inverser le statut
+            $newStatus = !$result['freeze'];
+            
+            // Mettre à jour
+            $updateStmt = $pdo->prepare("UPDATE teams SET freeze = :freeze WHERE id = :id");
+            $updateStmt->bindParam(':freeze', $newStatus, PDO::PARAM_BOOL);
+            $updateStmt->bindParam(':id', $teamId, PDO::PARAM_INT);
+            
+            return $updateStmt->execute();
+        }
+        
+        return false;
+    } catch (PDOException $e) {
+        error_log("Erreur lors du basculement du freeze: " . $e->getMessage());
+        return false;
+    }
+}
+
 $message = '';
 $teams = getAllTeams();
+
+// Gestion de l'action toggle_freeze pour les équipes
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] === 'toggle_freeze') {
+    $teamId = $_POST['team_id'] ?? '';
+    
+    if (!empty($teamId)) {
+        if (toggleTeamFreeze($teamId, $pdo)) {
+            $message = "Statut freeze modifié avec succès !";
+            $teams = getAllTeams(); // Recharger les équipes pour afficher le nouveau statut
+        } else {
+            $message = "Erreur lors de la modification du statut freeze.";
+        }
+    }
+    
+    // Redirection pour éviter la resoumission du formulaire
+    header('Location: ../controller/C_admin.php');
+    exit();
+}
 
 // Gestion des actions utilisateurs si on est dans la vue mod_user
 if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/leaderboard.css">
     <title>Tableau des Scores</title>
 </head>
 <body>
@@ -39,7 +40,13 @@
                         </td>
                         <td><?php echo htmlspecialchars($team['nom']); ?></td>
                         <td><?php echo htmlspecialchars($team['points']); ?>/8</td>
-                        <td><?php echo $team['percentage']; ?>%</td>
+                        <td>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: <?php echo $team['percentage']; ?>%;">
+                                    <?php echo $team['percentage']; ?>%
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

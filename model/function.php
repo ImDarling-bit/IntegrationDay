@@ -42,6 +42,8 @@ function getUserTeam($userId) {
     }
 }
 
+
+
 function isLoggedIn() {
     return isset($_SESSION['user_id']);
 }
@@ -65,13 +67,13 @@ function requireRole($requiredRole) {
 
 function getAllTeams() {
     global $pdo;
-
     try {
-        $stmt = $pdo->prepare("SELECT id, nom, points FROM teams ORDER BY points DESC");
+        // Assurez-vous d'inclure la colonne freeze dans la requête
+        $stmt = $pdo->prepare("SELECT id, nom, points, freeze FROM teams ORDER BY nom");
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        error_log("Erreur lors de la récupération des équipes : " . $e->getMessage());
+        error_log("Erreur lors de la récupération des équipes: " . $e->getMessage());
         return [];
     }
 }
@@ -263,5 +265,7 @@ function deleteTeam($teamId) {
         return false;
     }
 }
+
+
 
 ?>
