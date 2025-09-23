@@ -92,13 +92,15 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_team' && $_SERVER['REQUEST_ME
         if (!empty($nom) && $points !== '') {
             if (addTeam($nom, $points)) {
                 $message = "Équipe ajoutée avec succès !";
-                $teams = getAllTeams();
+                $teams = getAllTeams();     
             } else {
                 $message = "Erreur lors de l'ajout de l'équipe.";
             }
         } else {
             $message = "Veuillez remplir tous les champs obligatoires.";
         }
+        header('Location: ../controller/C_admin.php?view=mod_team');
+        exit();
     }
 
     if ($action === 'delete') {
