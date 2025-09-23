@@ -114,6 +114,14 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_team' && $_SERVER['REQUEST_ME
         }
     }
 }
+// Gestion du bouton freeze
+if (isset($_GET['freeze']) ) {
+    freeze($_GET['freeze']);
+    header("location: C_admin.php");
+}
+
+
+
 
 require_once '../view/admin.php';
 require_once '../view/deco.php';

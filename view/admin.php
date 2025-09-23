@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <?php include("reload.html"); ?>
     <title>Espace Administrateur</title>
 </head>
 <body>
@@ -48,7 +49,20 @@
                         <td><?php echo htmlspecialchars($team['nom']); ?></td>
                         <td><?php echo htmlspecialchars($team['points']); ?></td>
                         <td>
-                            <button>Freeze</button>
+                            <?php 
+                            // Si l'équipe n'est pas ou plus gelé...
+                            freezed($team["id"]);
+                            if (isset($_SESSION["freeze"][$team["id"]]) && $_SESSION["freeze"][$team["id"]] == true) { 
+                                echo "<input type='submit' value='Freezed' />"; 
+                            }
+                            else {
+                                echo "<form method='GET'> 
+                                <input type='hidden' name ='freeze' value='$team[id]'/>
+                                <input type='submit' value='Freeze' />
+                                </form>"; 
+                            }
+                            
+                            ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

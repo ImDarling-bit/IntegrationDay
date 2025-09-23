@@ -19,6 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $resultat['id'];
             $_SESSION['user_role'] = $resultat['role'];
             $_SESSION['user_team_id'] = $resultat['team_id'];
+            if ($resultat['role'] == 'admin') {
+                $teams = getAllTeams();
+                foreach($teams as $team) {
+                    $_SESSION["freeze"][$team["id"]] = false;
+                }
+                //echo  "<script> alert('ok'); </script>";
+            }
+            //echo  "<script> alert('ko'); </script>";
 
             switch ($resultat['role']) {
                 case 'admin':

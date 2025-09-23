@@ -28,6 +28,8 @@ CREATE TABLE teams (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
     points INT DEFAULT 0,
+    freezed TINYINT DEFAULT 0,
+    debut_freeze TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
