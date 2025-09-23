@@ -32,9 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-require_once '../view/orga.php';
-require_once '../view/add.php';
-require_once '../view/score.php';
+if ( isFreezed($_SESSION['user_team_id']) == false ) {
+    require_once '../view/orga.php';
+    require_once '../view/add.php';
+    require_once '../view/score.php';
+}
+else {
+    require_once '../view/ghost.php';
+}
 require_once '../view/deco.php';
 require_once '../view/footer.php';
 ?>
