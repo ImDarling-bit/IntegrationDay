@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img src="../src/img/logo-maria-curia.png" alt="Logo" style="display:block;margin:30px auto 10px auto;max-width:120px;">
+    <img src="../src/img/logo-maria-curia.png" alt="Logo" style="display:block;margin:30px auto 10px auto;max-width:160px;">
     <title>Connexion</title>
     <link rel="stylesheet" href="../src/css/style.css"> <!-- Ajout du CSS -->
 </head>

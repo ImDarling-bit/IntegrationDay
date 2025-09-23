@@ -1,0 +1,91 @@
+/* Bouton de déconnexion - Style principal */
+.btn-logout {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #dc3545; /* Rouge pour la déconnexion */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid #dc3545;
+  cursor: pointer;
+}
+
+/* Conteneur pour centrer le bouton */
+.btn-logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0; /* Espacement vertical optionnel */
+}
+
+/* Alternative 1: Centrage avec text-align (pour conteneur parent) */
+.text-center {
+  text-align: center;
+}
+
+/* Alternative 2: Centrage avec margin auto */
+.btn-logout-centered {
+  display: block;
+  margin: 20px auto;
+  width: fit-content;
+}
+
+/* Effet au survol */
+.btn-logout:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Effet au clic */
+.btn-logout:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Variante avec contour uniquement */
+.btn-logout-outline {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #dc3545;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid #dc3545;
+  cursor: pointer;
+}
+
+.btn-logout-outline:hover {
+  background-color: #dc3545;
+  color: white;
+  text-decoration: none;
+}
+
+/* Version avec icône */
+.btn-logout-icon::before {
+  content: "🚪 ";
+  margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-logout,
+  .btn-logout-outline {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}

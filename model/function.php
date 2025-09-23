@@ -58,6 +58,8 @@ function logout() {
     exit();
 }
 
+
+
 function requireRole($requiredRole) {
     if (!isLoggedIn() || getUserRole() !== $requiredRole) {
         header('Location: login.php');

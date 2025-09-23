@@ -28,7 +28,8 @@ CREATE TABLE teams (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(100) NOT NULL,
     points INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    freeze BOOLEAN DEFAULT FALSE
 );
 
 -- Table de liaison users-teams (pour les utilisateurs avec rôle "user")

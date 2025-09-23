@@ -2,36 +2,10 @@
 session_start();
 require_once '../model/config.php';
 require_once '../model/function.php';
+require_once '../model/function_freeze.php';
+require_once '../view/head.php';
 
 requireRole('admin');
-
-// Fonction pour basculer le statut freeze d'une équipe
-function toggleTeamFreeze($teamId, $pdo) {
-    try {
-        // Récupérer le statut actuel
-        $stmt = $pdo->prepare("SELECT freeze FROM teams WHERE id = :id");
-        $stmt->bindParam(':id', $teamId, PDO::PARAM_INT);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($result) {
-            // Inverser le statut
-            $newStatus = !$result['freeze'];
-            
-            // Mettre à jour
-            $updateStmt = $pdo->prepare("UPDATE teams SET freeze = :freeze WHERE id = :id");
-            $updateStmt->bindParam(':freeze', $newStatus, PDO::PARAM_BOOL);
-            $updateStmt->bindParam(':id', $teamId, PDO::PARAM_INT);
-            
-            return $updateStmt->execute();
-        }
-        
-        return false;
-    } catch (PDOException $e) {
-        error_log("Erreur lors du basculement du freeze: " . $e->getMessage());
-        return false;
-    }
-}
 
 $message = '';
 $teams = getAllTeams();
