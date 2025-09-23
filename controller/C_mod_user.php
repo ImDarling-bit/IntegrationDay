@@ -6,10 +6,11 @@ require_once '../model/function.php';
 requireRole('admin');
 
 $message = '';
+$users = getAllUsers();
+$roles = getAllRoles();
 $teams = getAllTeams();
 
-// Gestion des actions utilisateurs si on est dans la vue mod_user
-if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'] ?? '';
 
     if ($action === 'update') {
@@ -24,6 +25,7 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_ME
 
             if (updateUser($userId, $identifiant, $motDePasse, $roleId, $teamId)) {
                 $message = "Utilisateur modifié avec succès !";
+                $users = getAllUsers();
             } else {
                 $message = "Erreur lors de la modification de l'utilisateur.";
             }
@@ -43,6 +45,7 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_ME
 
             if (addUser($identifiant, $motDePasse, $roleId, $teamId)) {
                 $message = "Utilisateur ajouté avec succès !";
+                $users = getAllUsers();
             } else {
                 $message = "Erreur lors de l'ajout de l'utilisateur.";
             }
@@ -57,6 +60,7 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_ME
         if (!empty($userId)) {
             if (deleteUser($userId)) {
                 $message = "Utilisateur supprimé avec succès !";
+                $users = getAllUsers();
             } else {
                 $message = "Erreur lors de la suppression de l'utilisateur.";
             }
@@ -64,58 +68,5 @@ if (isset($_GET['view']) && $_GET['view'] === 'mod_user' && $_SERVER['REQUEST_ME
     }
 }
 
-// Gestion des actions équipes si on est dans la vue mod_team
-if (isset($_GET['view']) && $_GET['view'] === 'mod_team' && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $action = $_POST['action'] ?? '';
-
-    if ($action === 'update') {
-        $teamId = $_POST['team_id'] ?? '';
-        $nom = $_POST['nom'] ?? '';
-        $points = $_POST['points'] ?? '';
-
-        if (!empty($teamId) && !empty($nom) && $points !== '') {
-            if (updateTeam($teamId, $nom, $points)) {
-                $message = "Équipe modifiée avec succès !";
-                $teams = getAllTeams();
-            } else {
-                $message = "Erreur lors de la modification de l'équipe.";
-            }
-        } else {
-            $message = "Veuillez remplir tous les champs obligatoires.";
-        }
-    }
-
-    if ($action === 'add') {
-        $nom = $_POST['nom'] ?? '';
-        $points = $_POST['points'] ?? '';
-
-        if (!empty($nom) && $points !== '') {
-            if (addTeam($nom, $points)) {
-                $message = "Équipe ajoutée avec succès !";
-                $teams = getAllTeams();
-            } else {
-                $message = "Erreur lors de l'ajout de l'équipe.";
-            }
-        } else {
-            $message = "Veuillez remplir tous les champs obligatoires.";
-        }
-    }
-
-    if ($action === 'delete') {
-        $teamId = $_POST['team_id'] ?? '';
-
-        if (!empty($teamId)) {
-            if (deleteTeam($teamId)) {
-                $message = "Équipe supprimée avec succès !";
-                $teams = getAllTeams();
-            } else {
-                $message = "Impossible de supprimer cette équipe (des utilisateurs y sont assignés).";
-            }
-        }
-    }
-}
-
-require_once '../view/admin.php';
-require_once '../view/deco.php';
-require_once '../view/footer.php';
+require_once '../view/mod_user.php';
 ?>
