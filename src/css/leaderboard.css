@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #333;
+}
+
+table {
+    margin: 40px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 700px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: center;
+}
+
+th {
+    background: #fac964;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) {
+    background: #f2f6fa;
+}
+
+tr:nth-child(odd) {
+    background: #e9ecef;
+}
+
+td {
+    font-size: 1.1em;
+    color: #444;
+}
+
+td:first-child {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+tbody tr:hover {
+    background: #d0e7ff;
+    transition: background 0.2s;
+}
+
+p {
+    text-align: center;
+    color: #c00;
+    font-size: 1.1em;
+    margin-top: 40px;
+}
+
+#logout {
+    color: #f11717;
+    text-decoration: underline;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+    width: fit-content;
+}
+
+
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+        font-size: 0.95em;
+        max-width: 100%;
+        margin: 20px 0;
+        border-radius: 0;
+    }
+    th, td {
+        padding: 8px 4px;
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 1.3em;
+        margin-top: 20px;
+    }
+    body {
+        padding: 4px;
+    }
+}
+
+.progress-bar-container {
+    background: #eee;
+    border-radius: 20px;
+    height: 24px;
+    width: 100%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #64fa84 60%, #00ff1e 100%);
+    height: 100%;
+    color: #333;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    border-radius: 20px 0 0 20px;
+    line-height: 24px;
+    transition: width 0.5s;
+    font-size: 1em;
+}

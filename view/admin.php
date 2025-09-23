@@ -4,12 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/admin.css">
     <title>Espace Administrateur</title>
 </head>
 <body>
     <h1>Espace Administrateur</h1>
+    <div>
+        <a href="../controller/C_admin.php">
+            <button>Accueil</button>
+        </a>
+        <a href="../controller/C_admin.php?view=mod_user">
+            <button>Modification utilisateur</button>
+        </a>
+        <a href="../controller/C_admin.php?view=mod_team">
+            <button>Modification équipe</button>
+        </a>
+    </div>
 
-    <h2>Liste des équipes</h2>
+    <?php if (isset($_GET['view']) && $_GET['view'] === 'mod_user'): ?>
+        <?php
+        $users = getAllUsers();
+        $roles = getAllRoles();
+        include '../view/mod_user_content.php';
+        ?>
+    <?php elseif (isset($_GET['view']) && $_GET['view'] === 'mod_team'): ?>
+        <?php
+        include '../view/mod_team_content.php';
+        ?>
+    <?php else: ?>
+        <h2>Liste des équipes</h2>
 
     <?php if (!empty($teams)): ?>
         <table>
@@ -35,6 +58,6 @@
     <?php else: ?>
         <p>Aucune équipe trouvée.</p>
     <?php endif; ?>
-
+    <?php endif; ?>
 </body>
 </html>

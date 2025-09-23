@@ -7,8 +7,11 @@ requireRole('user');
 
 $teams = getTeamsWithScores();
 
+$userTeam = getUserTeam($_SESSION['user_id']);
+
 require_once '../view/user.php';
-require_once '../view/score.php';
+require_once '../view/view_point.php';
+require_once '../view/score_user.php';
 require_once '../view/deco.php';
 require_once '../view/footer.php';
 ?>

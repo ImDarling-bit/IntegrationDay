@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $message = "Veuillez sélectionner une équipe et une action.";
     }
+    header('Location: ../controller/C_orga.php');
+    exit();
 }
 
 require_once '../view/add.php';
